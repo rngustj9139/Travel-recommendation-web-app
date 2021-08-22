@@ -11,4 +11,9 @@ public class HomeController {
         return "full-img-cover" ;
     }
 
+    @GetMapping("login")
+    public String login() {
+        return "Login";
+    }
+
 }
