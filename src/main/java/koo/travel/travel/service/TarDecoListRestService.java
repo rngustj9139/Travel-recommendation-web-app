@@ -1,12 +1,15 @@
 package koo.travel.travel.service;
 
 import koo.travel.travel.domain.TarDecoListDomain;
-import koo.travel.travel.repository.JpaTarDecoListRepository;
+import koo.travel.travel.paging.PagingCriteria;
 import koo.travel.travel.repository.TarDecoListRepository;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -15,6 +18,9 @@ import java.util.List;
 public class TarDecoListRestService {
 
     private final TarDecoListRepository tarDecoListRepository;
+
+    private static final int BLOCK_PAGE_NUM_COUNT = 10; // 블럭에 존재하는 페이지 수
+    private static final int PAGE_POST_COUNT = 10; // 한 페이지에 존재하는 게시글 수
 
     public TarDecoListRestService(TarDecoListRepository tarDecoListRepository) {
         this.tarDecoListRepository = tarDecoListRepository;
@@ -51,10 +57,6 @@ public class TarDecoListRestService {
         }catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public List<TarDecoListDomain> findMembers() {
-        return tarDecoListRepository.findAll();
     }
 
 }

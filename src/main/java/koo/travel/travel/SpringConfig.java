@@ -1,7 +1,10 @@
 package koo.travel.travel;
 
+import koo.travel.travel.repository.HomeRepository;
+import koo.travel.travel.repository.JpaHomeRepository;
 import koo.travel.travel.repository.JpaTarDecoListRepository;
 import koo.travel.travel.repository.TarDecoListRepository;
+import koo.travel.travel.service.HomeService;
 import koo.travel.travel.service.TarDecoListRestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -27,6 +30,16 @@ public class SpringConfig {
     @Bean
     public TarDecoListRepository tarDecoListRepository() {
         return new JpaTarDecoListRepository(em);
+    }
+
+    @Bean
+    public HomeService homeService() {
+        return new HomeService(homeRepository());
+    }
+
+    @Bean
+    public HomeRepository homeRepository() {
+        return new JpaHomeRepository(em);
     }
 
 }

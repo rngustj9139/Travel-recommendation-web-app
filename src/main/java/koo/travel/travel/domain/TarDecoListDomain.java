@@ -18,7 +18,7 @@ public class TarDecoListDomain {
     private double cncrtAccPsonNum;
     private double estiNum;
 
-    public static class Builder {
+    public static class Builder { // 점층적 생성자 패턴과 자바 빈즈 패턴의 모든 장점을 이용 할 수 있는 빌더 패턴 이용
         private int id;
         private String title;
         private int estiDecoDivCd;
