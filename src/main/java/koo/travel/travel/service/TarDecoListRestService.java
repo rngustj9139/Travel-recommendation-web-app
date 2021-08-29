@@ -9,6 +9,8 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Transactional
 public class TarDecoListRestService {
 
@@ -49,6 +51,10 @@ public class TarDecoListRestService {
         }catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public List<TarDecoListDomain> findMembers() {
+        return tarDecoListRepository.findAll();
     }
 
 }
